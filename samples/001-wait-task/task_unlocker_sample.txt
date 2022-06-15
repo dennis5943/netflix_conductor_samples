@@ -1,0 +1,39 @@
+{
+  "updateTime": 1655261551440,
+  "name": "system_task_unlocker",
+  "description": "解鎖",
+  "version": 1,
+  "tasks": [
+    {
+      "name": "test_complete_task_event",
+      "taskReferenceName": "unlock_event",
+      "inputParameters": {
+        "sourceWorkflowId": "${workflow.input.sourceWorkflowId}"
+      },
+      "type": "EVENT",
+      "decisionCases": {},
+      "defaultCase": [],
+      "forkTasks": [],
+      "startDelay": 0,
+      "joinOn": [],
+      "sink": "conductor",
+      "optional": false,
+      "defaultExclusiveJoinTask": [],
+      "asyncComplete": false,
+      "loopOver": []
+    }
+  ],
+  "inputParameters": [],
+  "outputParameters": {
+    "data": "${get_population_data.output.response.body.data}",
+    "source": "${get_population_data.output.response.body.source}"
+  },
+  "schemaVersion": 2,
+  "restartable": true,
+  "workflowStatusListenerEnabled": false,
+  "ownerEmail": "example@email.com",
+  "timeoutPolicy": "ALERT_ONLY",
+  "timeoutSeconds": 0,
+  "variables": {},
+  "inputTemplate": {}
+}
