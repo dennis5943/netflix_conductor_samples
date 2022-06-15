@@ -1,9 +1,7 @@
 {
-  "createTime": 1655221239102,
-  "updateTime": 1655053280809,
   "name": "system_task_test",
   "description": "Wait測試",
-  "version": 1,
+  "version": 2,
   "tasks": [
     {
       "name": "fork_join",
@@ -95,15 +93,13 @@
       "loopOver": []
     },
     {
-      "name": "get_population_data2",
-      "taskReferenceName": "get_population_data2",
+      "name": "task_before_wait",
+      "taskReferenceName": "task_before_wait4",
       "inputParameters": {
-        "http_request": {
-          "uri": "http://www.google.com.tw",
-          "method": "GET"
-        }
+        "mod": "${workflow.input.mod}",
+        "oddEven": "${workflow.input.oddEven}"
       },
-      "type": "HTTP",
+      "type": "SIMPLE",
       "decisionCases": {},
       "defaultCase": [],
       "forkTasks": [],
