@@ -3,24 +3,13 @@ curl -X 'POST' \
   -H 'accept: text/plain' \
   -H 'Content-Type: application/json' \
   -d '{
-  "workflowInstanceId": "d377a1ce-e64e-4295-af1e-c4a852322783",
-  "taskId": "397d582a-4e6d-440c-9d50-a71f68090e66",
-  "reasonForIncompletion": "string",
-  "callbackAfterSeconds": 0,
-  "workerId": "Dennisde-Mac-mini.local",
-  "status": "COMPLETED",
-  "outputData": {
-    "additionalProp1": {},
-    "additionalProp2": {},
-    "additionalProp3": {}
-  },
-  "logs": [
-    {
-      "log": "string",
-      "taskId": "string",
-      "createdTime": 0
+    "workflowInstanceId": "6dc0a4a2-3d5c-4c77-89e3-b2b480455e08",
+    "taskId": "86aa325a-b718-4771-908e-98b2be233047",
+    "reasonForIncompletion" : "If failed, reason for failure",
+    "callbackAfterSeconds": 0,
+    "status": "COMPLETED",
+    "outputData": {
+        "result":"OKOK"
     }
-  ],
-  "externalOutputPayloadStoragePath": "./",
-  "subWorkflowId": "string"
+
 }'
