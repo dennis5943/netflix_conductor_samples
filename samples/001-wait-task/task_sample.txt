@@ -1,0 +1,131 @@
+{
+  "createTime": 1655221239102,
+  "updateTime": 1655053280809,
+  "name": "system_task_test",
+  "description": "Wait測試",
+  "version": 1,
+  "tasks": [
+    {
+      "name": "fork_join",
+      "taskReferenceName": "my_fork_join_ref",
+      "inputParameters": {},
+      "type": "FORK_JOIN",
+      "decisionCases": {},
+      "defaultCase": [],
+      "forkTasks": [
+        [
+          {
+            "name": "task_before_wait",
+            "taskReferenceName": "task_before_wait2",
+            "inputParameters": {
+              "mod": "${workflow.input.mod}",
+              "oddEven": "${workflow.input.oddEven}"
+            },
+            "type": "SIMPLE",
+            "decisionCases": {},
+            "defaultCase": [],
+            "forkTasks": [],
+            "startDelay": 0,
+            "joinOn": [],
+            "optional": false,
+            "defaultExclusiveJoinTask": [],
+            "asyncComplete": false,
+            "loopOver": []
+          },
+          {
+            "name": "task_before_wait",
+            "taskReferenceName": "task_before_wait3",
+            "inputParameters": {
+              "mod": "${workflow.input.mod}",
+              "oddEven": "${workflow.input.oddEven}"
+            },
+            "type": "SIMPLE",
+            "decisionCases": {},
+            "defaultCase": [],
+            "forkTasks": [],
+            "startDelay": 0,
+            "joinOn": [],
+            "optional": false,
+            "defaultExclusiveJoinTask": [],
+            "asyncComplete": false,
+            "loopOver": []
+          }
+        ],
+        [
+          {
+            "name": "wait_task",
+            "taskReferenceName": "wait_task",
+            "inputParameters": {},
+            "type": "WAIT",
+            "decisionCases": {},
+            "defaultCase": [],
+            "forkTasks": [],
+            "startDelay": 0,
+            "joinOn": [],
+            "optional": false,
+            "defaultExclusiveJoinTask": [],
+            "asyncComplete": false,
+            "loopOver": []
+          }
+        ]
+      ],
+      "startDelay": 0,
+      "joinOn": [],
+      "optional": false,
+      "defaultExclusiveJoinTask": [],
+      "asyncComplete": false,
+      "loopOver": []
+    },
+    {
+      "name": "notification_join",
+      "taskReferenceName": "notification_join_ref",
+      "inputParameters": {},
+      "type": "JOIN",
+      "decisionCases": {},
+      "defaultCase": [],
+      "forkTasks": [],
+      "startDelay": 0,
+      "joinOn": [
+        "task_before_wait3",
+        "wait_task"
+      ],
+      "optional": false,
+      "defaultExclusiveJoinTask": [],
+      "asyncComplete": false,
+      "loopOver": []
+    },
+    {
+      "name": "get_population_data2",
+      "taskReferenceName": "get_population_data2",
+      "inputParameters": {
+        "http_request": {
+          "uri": "http://www.google.com.tw",
+          "method": "GET"
+        }
+      },
+      "type": "HTTP",
+      "decisionCases": {},
+      "defaultCase": [],
+      "forkTasks": [],
+      "startDelay": 0,
+      "joinOn": [],
+      "optional": false,
+      "defaultExclusiveJoinTask": [],
+      "asyncComplete": false,
+      "loopOver": []
+    }
+  ],
+  "inputParameters": [],
+  "outputParameters": {
+    "data": "${get_population_data.output.response.body.data}",
+    "source": "${get_population_data.output.response.body.source}"
+  },
+  "schemaVersion": 2,
+  "restartable": true,
+  "workflowStatusListenerEnabled": false,
+  "ownerEmail": "example@email.com",
+  "timeoutPolicy": "ALERT_ONLY",
+  "timeoutSeconds": 0,
+  "variables": {},
+  "inputTemplate": {}
+}

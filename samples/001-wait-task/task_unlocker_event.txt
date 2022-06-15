@@ -1,0 +1,16 @@
+{
+  "name": "unlock_wait_event",
+  "event": "conductor:system_task_unlocker:unlock_event",
+  "actions": [
+    {
+      "action": "complete_task",
+      "complete_task": {
+        "workflowId": "${sourceWorkflowId}",
+        "taskRefName": "wait_task",
+        "output": {}
+      },
+      "expandInlineJSON": false
+    }
+  ],
+  "active": true
+}
