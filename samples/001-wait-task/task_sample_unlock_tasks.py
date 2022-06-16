@@ -1,12 +1,14 @@
 import requests
 import json
 
-res = requests.get("http://localhost:8080/api/workflow/running/system_task_test",headers={"accept":"*/*"})
+hosturl = "http://192.168.1.3"
+
+res = requests.get("{}:8080/api/workflow/running/system_task_test".format(hosturl),headers={"accept":"*/*"})
 if res.status_code == 200:
     wids = json.loads(res.text)
 
 def unlockWaitTask(wid):
-    res = requests.get("http://localhost:8080/api/workflow/{}?includeTasks=true".format(wid),headers={"accept":"*/*"})
+    res = requests.get("{}:8080/api/workflow/{}?includeTasks=true".format(hosturl,wid),headers={"accept":"*/*"})
     tasks = [{
                 "workflowInstanceId":x['workflowInstanceId'] ,
                 "taskId":x['taskId']
@@ -26,7 +28,7 @@ def unlockWaitTask(wid):
             }
         headers = {"accept": "text/plain" ,"Content-Type": "application/json"}
 
-        res = requests.post('http://localhost:8080/api/tasks',data=json.dumps(data),headers=headers)
+        res = requests.post('{}:8080/api/tasks'.format(hosturl),data=json.dumps(data),headers=headers)
         print(res.status_code,data,headers)
 
 for wid in wids:

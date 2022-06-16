@@ -20,8 +20,9 @@ def wait_task(task):
 
 
 def main():
+    hosturl = "http://192.168.1.3"
     print('Starting Kitchensink workflows')
-    cc = ConductorWorker('http://localhost:8080/api', 1, 0.1)
+    cc = ConductorWorker('{}:8080/api'.format(hosturl), 1, 0.1)
     cc.start('task_before_wait',task_before_wait, False)
     cc.start('wait_task',wait_task, True)
     
